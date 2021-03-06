@@ -17,4 +17,4 @@ jobs:
           which jq
       - name: show_outputs
         run: |
-          echo '${{steps.test_run.outputs.LABEL_TIMER_RESULTS}}' | jq
+          echo '${{steps.test_run.outputs.results}}' | jq
