@@ -14,7 +14,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: which_jq
         run: |
-        which jq
+          which jq
       - name: show_outputs
         run: |
           echo '${{steps.test_run.outputs.LABEL_TIMER_RESULTS}}' | jq
