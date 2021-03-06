@@ -12,10 +12,9 @@ jobs:
         with:
           targets: '対応中, 依頼中'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: install_jq
+      - name: which_jq
         run: |
-          apt-get -y update
-          apt-get -y install jq
+        which jq
       - name: show_outputs
         run: |
           echo '${{steps.test_run.outputs.LABEL_TIMER_RESULTS}}' | jq
