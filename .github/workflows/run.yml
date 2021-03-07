@@ -17,4 +17,4 @@ jobs:
           which jq
       - name: show_outputs
         run: |
-          echo '${{ steps.test_run.outputs.action }}'
+          echo "${{ steps.test_run.outputs.action }}"
