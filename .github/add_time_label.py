@@ -5,7 +5,8 @@ import requests
 args = sys.argv
 print(args)
 token = args[1]
-sum_seconds = int(args[2])
+base_url = args[2]
+sum_seconds = int(args[3])
 
 if sum_seconds <= 1800:
   label = '瞬殺'
@@ -14,10 +15,8 @@ elif sum_seconds <= 10800:
 else:
   label = 'だいぶかかった'
 
-with open(environ.get('GITHUB_EVENT_PATH')) as f:
-  events = json.load(f)
-  headers = {'Authorization': 'token {}'.format(token)}
-  payload = {'labels': [label]}
-  api_url = events['issue']['url'] + '/labels'
-  r = requests.post(api_url, headers=headers, data=json.dumps(payload))
-  print(r)
+headers = {'Authorization': 'token {}'.format(token)}
+payload = {'labels': [label]}
+api_url = base_url + '/labels'
+r = requests.post(api_url, headers=headers, data=json.dumps(payload))
+print(r)
