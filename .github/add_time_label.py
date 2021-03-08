@@ -6,7 +6,7 @@ args = sys.argv
 print(args)
 token = args[1]
 base_url = args[2]
-sum_seconds = int(args[3])
+sum_seconds = int(float(args[3]))
 
 if sum_seconds <= 1800:
   label = '瞬殺'
