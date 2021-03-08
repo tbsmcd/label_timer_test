@@ -13,9 +13,9 @@ jobs:
         with:
           targets: '対応中, 依頼中'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: which_jq
-        run: |
-          which jq
       - name: show_outputs
         run: |
-          echo '${{ steps.test_run.outputs.results }}' | jq .
+          echo 'Action ${{ steps.test_run.outputs.action }}'
+          echo 'Label ${{ steps.test_run.outputs.label }}'
+          echo 'Passed seconds ${{ steps.test_run.outputs.passed_seconds }}'
+          echo 'Sum seconds ${{ steps.test_run.outputs.sum_seconds }}'
