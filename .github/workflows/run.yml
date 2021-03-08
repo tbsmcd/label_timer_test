@@ -23,5 +23,4 @@ jobs:
         run: |
           which python
           python --version
-          which pytho3
-          python3 --version
+
