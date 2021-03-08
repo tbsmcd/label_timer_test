@@ -3,6 +3,7 @@ import json
 import requests
 
 args = sys.argv
+print(args)
 token = args[1]
 sum_seconds = int(args[2])
 
