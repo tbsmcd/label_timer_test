@@ -19,3 +19,9 @@ jobs:
           echo 'Label ${{ steps.test_run.outputs.label }}'
           echo 'Passed seconds ${{ steps.test_run.outputs.passed_seconds }}'
           echo 'Sum seconds ${{ steps.test_run.outputs.sum_seconds }}'
+      - name: check_python
+        run: |
+          which python
+          python --version
+          which pytho3
+          python3 --version
