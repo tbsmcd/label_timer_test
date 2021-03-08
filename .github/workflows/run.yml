@@ -23,8 +23,12 @@ jobs:
         run: |
           which python
           python --version
+      - name: checkout
+        if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
+        uses: actions/checkout@v2
       - name: add_time_label
         if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
         run: |
           pip install requests
+          python .github/add_time_label.py ${{ steps.test_run.outputs.sum_seconds }}
           
