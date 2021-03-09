@@ -3,6 +3,9 @@ on:
   issues:
     types:
       ['labeled', 'unlabeled']
+  pull_request:
+    types:
+      ['labeled', 'unlabeled']
 jobs:
   timer:
     runs-on: ubuntu-latest
@@ -11,7 +14,7 @@ jobs:
         uses: tbsmcd/label_timer@master
         id: test_run
         with:
-          targets: '対応中, 依頼中'
+          targets: '対応中, 依頼中, needs_review'
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: checkout
         if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
