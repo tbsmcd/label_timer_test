@@ -11,11 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test_run
-        uses: tbsmcd/label_timer@master
+        uses: tbsmcd/label_timer@v2.0
         id: test_run
         with:
           targets: '対応中, 依頼中, needs_review'
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: url
+        run: |
+          echo ${{ steps.test_run.outputs.url }}
       - name: checkout
         if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
         uses: actions/checkout@v2
