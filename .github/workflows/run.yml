@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test_run
-        uses: tbsmcd/label_timer@v2.1
+        uses: tbsmcd/label_timer@v3.0
         id: test_run
         with:
           targets: '対応中, 依頼中, needs_review'
@@ -19,12 +19,10 @@ jobs:
       - name: url
         run: |
           echo ${{ steps.test_run.outputs.url }}
-      - name: checkout
-        if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
-        uses: actions/checkout@v2
       - name: add_time_label
         if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
         run: |
-          pip install requests
-          python .github/add_time_label.py ${{ secrets.GITHUB_TOKEN }} ${{ steps.test_run.outputs.url }} ${{ steps.test_run.outputs.sum_seconds }}
+          echo ${{ steps.test_run.outputs.url }}
+          echo ${{ steps.test_run.outputs.sum_seconds }}
+          echo ${{ github.event.sender.login }}
           
