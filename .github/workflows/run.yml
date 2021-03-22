@@ -19,6 +19,9 @@ jobs:
       - name: url
         run: |
           echo ${{ steps.test_run.outputs.url }}
+      - name: checkout
+        if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
+        uses: actions/checkout@v2
       - name: add_time_label
         if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
         run: |
