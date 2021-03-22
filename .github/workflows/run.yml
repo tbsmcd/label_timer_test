@@ -22,7 +22,7 @@ jobs:
       - name: add_time_label
         if: ${{ github.event.action == 'unlabeled' && github.event.label.name == '対応中' }}
         run: |
-          echo ${{ steps.test_run.outputs.url }}
-          echo ${{ steps.test_run.outputs.sum_seconds }}
+          pip install requests
+          python .github/add_time_label.py ${{ secrets.GITHUB_TOKEN }} ${{ steps.test_run.outputs.url }} ${{ steps.test_run.outputs.sum_seconds }}
           echo ${{ github.event.sender.login }}
           
